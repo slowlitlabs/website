@@ -1,4 +1,6 @@
 ---
+import Wordmark from "./Wordmark.astro";
+
 const { current } = Astro.props as { current?: string };
 
 const links = [
@@ -9,12 +11,9 @@ const links = [
 ];
 ---
 
-<nav class="shell flex items-center justify-between pt-16 md:pt-20 pb-10 md:pb-12">
-  <a href="/" class="flex items-baseline gap-3 group" aria-label="Cinder Labs — home">
-    <span class="display-small text-[color:var(--color-ink)]" style="font-weight: 440;">
-      Cinder Labs
-    </span>
-    <span class="ember" aria-hidden="true"></span>
+<nav class="shell flex items-center justify-between pt-16 md:pt-20 pb-10 md:pb-12 relative">
+  <a href="/" class="group" aria-label="Cinder Labs — home">
+    <Wordmark size="nav" />
   </a>
 
   <div class="hidden md:flex items-center gap-8">

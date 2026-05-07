@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import HeroEmber from "../components/HeroEmber.astro";
 
 const roles = [
   {
@@ -27,7 +28,7 @@ const roles = [
       <p class="mono rise rise-1">§ Work at Cinder</p>
 
       <h1 class="display-hero mt-12 md:mt-16 rise rise-2">
-        We need<br />builders.<span class="ember ember-mega ml-5 md:ml-7" aria-hidden="true"></span>
+        We need<br />builders.<HeroEmber />
       </h1>
 
       <p class="prose-lead mt-16 md:mt-20 measure rise rise-3">
@@ -44,7 +45,7 @@ const roles = [
   </section>
 
   <section class="shell section reveal">
-    <hr class="rule mb-20 md:mb-28" />
+    <hr class="rule mb-12 md:mb-16" />
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
       <div class="md:col-span-3 sticky-label">
         <p class="mono">§ How we work</p>
@@ -75,7 +76,7 @@ const roles = [
   </section>
 
   <section class="shell section reveal">
-    <hr class="rule mb-20 md:mb-28" />
+    <hr class="rule mb-12 md:mb-16" />
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
       <div class="md:col-span-3 sticky-label">
         <p class="mono">§ Open roles</p>

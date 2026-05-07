@@ -1,0 +1,76 @@
+---
+import FlameMark from "./FlameMark.astro";
+const { size = "nav", showMark = true } = Astro.props as {
+  size?: "nav" | "footer";
+  showMark?: boolean;
+};
+
+const className = size === "footer" ? "wordmark wordmark-footer" : "wordmark wordmark-nav";
+const markSize = size === "footer" ? 28 : 30;
+---
+
+<span class={className}>
+  {showMark && (
+    <span class="wordmark-mark">
+      <FlameMark size={markSize} />
+    </span>
+  )}
+  <span class="wordmark-text">
+    <span class="wordmark-cinder">Cinder</span><span class="wordmark-labs">Labs</span>
+  </span>
+</span>
+
+<style is:global>
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    line-height: 1;
+    white-space: nowrap;
+    gap: 0.45rem;
+  }
+
+  /* Use grid centering for the mark so the flame's full visible bounds
+     are vertically centered against the text's actual rendered height,
+     not its bounding box including descenders. */
+  .wordmark-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+  }
+
+  .wordmark-text {
+    display: inline-flex;
+    align-items: baseline;
+    /* The text block height is the cap-height + descender. We center the
+       flame against this whole block via the parent's align-items: center.
+       Adding a small downward nudge for true optical alignment. */
+  }
+
+  .wordmark-cinder {
+    font-variation-settings: "opsz" 36, "SOFT" 30;
+    font-weight: 460;
+    letter-spacing: -0.018em;
+  }
+
+  /* Labs sits a touch lighter — typographic contrast within the wordmark,
+     but kept close in weight so the difference is felt, not announced.
+     Negative margin pulls it tight against Cinder, killing the optical gap. */
+  .wordmark-labs {
+    font-variation-settings: "opsz" 36, "SOFT" 40;
+    font-weight: 320;
+    letter-spacing: -0.005em;
+    color: var(--color-ink-soft);
+    margin-left: 0.06em;
+  }
+
+  .wordmark-nav {
+    font-size: 1.1875rem;
+  }
+
+  .wordmark-footer {
+    font-size: 1.1875rem;
+  }
+</style>

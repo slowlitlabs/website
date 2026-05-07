@@ -7,16 +7,20 @@
    ───────────────────────────────────────────────────────────── */
 
 @theme {
-  --color-paper: #faf8f5;
-  --color-paper-deep: #f3efe7;
-  --color-ink: #1a1814;
-  --color-ink-soft: #2c2924;
-  --color-smoke: #6b6660;
-  --color-smoke-soft: #9a948b;
-  --color-line: #e8e3dc;
-  --color-line-soft: #efeae2;
-  --color-cinder: #b8421c;
-  --color-ember: #e85d2c;
+  /* Cinder Labs — official palette.
+     The hottest part of a flame is blue/violet. We work at the hot point. */
+  --color-paper: #fafaf7;
+  --color-paper-deep: #f1f1ec;
+  --color-ink: #0e1426;
+  --color-ink-soft: #222840;
+  --color-smoke: #6b7185;
+  --color-smoke-soft: #9aa0b3;
+  --color-line: #e2e2dc;
+  --color-line-soft: #eeeee8;
+  --color-cinder: #8e5bff;
+  --color-ember: #a07aff;
+  --color-blue: #4d7cff;
+  --color-blue-bright: #7aa0ff;
 
   --font-display: "Fraunces", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", serif;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -45,10 +49,13 @@ html {
 body {
   background: var(--color-paper);
   min-height: 100vh;
-  /* Faint grain — gives paper texture without being noisy */
+  margin: 0;
+  padding-top: clamp(1rem, 2vw, 1.75rem);
+  padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  /* Faint atmospheric haze — violet + blue, very subtle */
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(184, 66, 28, 0.018) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(26, 24, 20, 0.015) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(142, 91, 255, 0.022) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(77, 124, 255, 0.018) 0%, transparent 50%);
 }
 
 ::selection {
@@ -114,6 +121,38 @@ body {
   font-variation-settings: "opsz" 144, "SOFT" 70;
 }
 
+/* Inline italic accent for product names + emphasis in body copy.
+   Uses Fraunces italic at body size — quietly elevates the moment. */
+.serif-accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 24, "SOFT" 60;
+  font-weight: 460;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+}
+
+/* Pull quote — for one moment per page where the type takes over */
+.pull-quote {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144, "SOFT" 70;
+  font-weight: 320;
+  font-style: italic;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+
+.pull-quote-attribution {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-smoke-soft);
+  margin-top: 1.25rem;
+}
+
 /* ─────────────────────────────────────────────────────────────
    Mono — used only for the frame: labels, dates, versions
    ───────────────────────────────────────────────────────────── */
@@ -126,6 +165,13 @@ body {
   text-transform: uppercase;
   color: var(--color-smoke);
   font-feature-settings: "tnum";
+  transition: color 0.4s ease;
+}
+
+/* Subtle warmth on hover — only when the label is a child of an interactive
+   sticky-label column. Quietly tells the reader the section is alive. */
+.sticky-label:hover .mono {
+  color: var(--color-cinder);
 }
 
 .mono-soft {
@@ -200,8 +246,8 @@ body {
   vertical-align: middle;
   box-shadow:
     0 0 0 1.5px rgba(255, 255, 255, 0.55),
-    0 0 8px rgba(232, 93, 44, 0.7),
-    0 0 18px rgba(232, 93, 44, 0.45);
+    0 0 8px rgba(142, 91, 255, 0.7),
+    0 0 18px rgba(142, 91, 255, 0.45);
   animation: ember-pulse 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
@@ -217,9 +263,9 @@ body {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(232, 93, 44, 0.5) 0%,
-    rgba(232, 93, 44, 0.2) 40%,
-    rgba(232, 93, 44, 0) 70%
+    rgba(142, 91, 255, 0.5) 0%,
+    rgba(142, 91, 255, 0.2) 40%,
+    rgba(142, 91, 255, 0) 70%
   );
   pointer-events: none;
   z-index: -1;
@@ -239,9 +285,9 @@ body {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(232, 93, 44, 0.18) 0%,
-    rgba(232, 93, 44, 0.06) 40%,
-    rgba(232, 93, 44, 0) 65%
+    rgba(142, 91, 255, 0.18) 0%,
+    rgba(142, 91, 255, 0.06) 40%,
+    rgba(142, 91, 255, 0) 65%
   );
   pointer-events: none;
   z-index: -2;
@@ -255,8 +301,8 @@ body {
   top: -4px;
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.5),
-    0 0 14px rgba(232, 93, 44, 0.75),
-    0 0 32px rgba(232, 93, 44, 0.5);
+    0 0 14px rgba(142, 91, 255, 0.75),
+    0 0 32px rgba(142, 91, 255, 0.5);
 }
 
 .ember-mega {
@@ -265,8 +311,8 @@ body {
   top: -6px;
   box-shadow:
     0 0 0 3px rgba(255, 255, 255, 0.45),
-    0 0 24px rgba(232, 93, 44, 0.8),
-    0 0 56px rgba(232, 93, 44, 0.5);
+    0 0 24px rgba(142, 91, 255, 0.8),
+    0 0 56px rgba(142, 91, 255, 0.5);
 }
 
 /* Core dot — fast cycle, color-shifts from deep ember to cream-white at peak */
@@ -274,28 +320,28 @@ body {
   0%, 100% {
     opacity: 0.6;
     transform: scale(0.9);
-    background: #c83f17;
+    background: #6b3fe0;
     box-shadow:
       0 0 0 1.5px rgba(255, 255, 255, 0.4),
-      0 0 6px rgba(232, 93, 44, 0.55),
-      0 0 14px rgba(232, 93, 44, 0.35);
+      0 0 6px rgba(142, 91, 255, 0.55),
+      0 0 14px rgba(142, 91, 255, 0.35);
   }
   35% {
     opacity: 0.9;
-    background: #ee6a35;
+    background: #8e5bff;
   }
   50% {
     opacity: 1;
     transform: scale(1.1);
-    background: #fdb78e;
+    background: #c9d4ff;
     box-shadow:
       0 0 0 2px rgba(255, 255, 255, 0.7),
-      0 0 12px rgba(255, 165, 110, 0.85),
-      0 0 28px rgba(232, 93, 44, 0.6);
+      0 0 12px rgba(160, 122, 255, 0.85),
+      0 0 28px rgba(77, 124, 255, 0.6);
   }
   70% {
     opacity: 0.9;
-    background: #ee6a35;
+    background: #8e5bff;
   }
 }
 
@@ -446,6 +492,13 @@ body {
   padding-bottom: clamp(6rem, 14vw, 12rem);
 }
 
+/* Trimmed hero — slightly less top space so the meta line sits closer
+   to the nav, but bottom padding stays generous. */
+.hero-trim {
+  padding-top: clamp(3.5rem, 8vw, 7rem);
+  padding-bottom: clamp(6rem, 14vw, 12rem);
+}
+
 /* ─────────────────────────────────────────────────────────────
    Hairlines — draw left-to-right when entering viewport
    ───────────────────────────────────────────────────────────── */
@@ -454,7 +507,6 @@ body {
   height: 1px;
   background: var(--color-line);
   border: 0;
-  margin: 0;
   transform-origin: left center;
   transform: scaleX(0);
   transition: transform 1.1s cubic-bezier(0.2, 0.6, 0.2, 1);
@@ -543,6 +595,75 @@ body {
   position: sticky;
   top: 6rem;
   align-self: start;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Plasma haze — atmospheric violet/blue background drift.
+   Used on hero sections. Positioned top-left, bleeds the full
+   viewport width. Pure CSS, no images.
+   ───────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────
+   Page plasma — atmospheric violet/blue haze sitting behind
+   EVERYTHING (nav, hero, sections, footer). Fixed to viewport
+   so it covers the full page width regardless of scroll.
+   ───────────────────────────────────────────────────────────── */
+
+.page-plasma {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.page-plasma::before,
+.page-plasma::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 55% at 82% 18%, rgba(142, 91, 255, 0.13) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 50% at 95% 55%, rgba(77, 124, 255, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 70% 85%, rgba(160, 122, 255, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 40% at 12% 30%, rgba(122, 160, 255, 0.06) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.page-plasma::before {
+  animation: plasma-drift-a 22s ease-in-out infinite alternate;
+}
+
+.page-plasma::after {
+  animation: plasma-drift-b 28s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+
+/* Make sure all content sits above the plasma layer */
+nav, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes plasma-drift-a {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-2%, 1.5%) scale(1.05); }
+  100% { transform: translate(1.5%, -1.5%) scale(1.02); }
+}
+
+@keyframes plasma-drift-b {
+  0%   { transform: translate(0, 0) scale(1.02); }
+  50%  { transform: translate(2%, -1%) scale(0.98); }
+  100% { transform: translate(-1.5%, 2%) scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-plasma::before,
+  .page-plasma::after {
+    animation: none;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────

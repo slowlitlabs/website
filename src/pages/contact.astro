@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import HeroEmber from "../components/HeroEmber.astro";
 
 const channels = [
   {
@@ -27,13 +28,13 @@ const channels = [
       <p class="mono rise rise-1">§ Get in touch</p>
 
       <h1 class="display-hero mt-12 md:mt-16 rise rise-2">
-        Contact<span class="ember ember-mega ml-7 md:ml-10" aria-hidden="true"></span>
+        Contact<HeroEmber />
       </h1>
     </div>
   </section>
 
   <section class="shell section reveal">
-    <hr class="rule mb-20 md:mb-28" />
+    <hr class="rule mb-12 md:mb-16" />
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
       <div class="md:col-span-3 sticky-label">
         <p class="mono">§ Channels</p>
@@ -54,7 +55,7 @@ const channels = [
   </section>
 
   <section class="shell section reveal">
-    <hr class="rule mb-20 md:mb-28" />
+    <hr class="rule mb-12 md:mb-16" />
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
       <div class="md:col-span-3 sticky-label">
         <p class="mono">§ Where we are</p>

@@ -1,15 +1,15 @@
 ---
+import Wordmark from "./Wordmark.astro";
 const year = new Date().getFullYear();
 ---
 
-<footer class="shell mt-40 md:mt-56 pb-24 md:pb-32">
-  <hr class="rule mb-16 md:mb-20" />
+<footer class="shell mt-24 md:mt-32 pb-6 md:pb-10">
+  <hr class="rule mb-10 md:mb-14" />
 
-  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
-    <div class="flex items-baseline gap-3">
-      <span style="font-family: var(--font-display); font-variation-settings: 'opsz' 36, 'SOFT' 35; font-weight: 440; font-size: 1.25rem; letter-spacing: -0.012em; color: var(--color-ink);">Cinder Labs</span>
-      <span class="ember" aria-hidden="true"></span>
-    </div>
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10 pt-3 md:pt-5">
+    <a href="/" class="group" aria-label="Cinder Labs — home">
+      <Wordmark size="footer" />
+    </a>
 
     <div class="flex flex-wrap gap-x-7 gap-y-3">
       <a href="/manifesto" class="link-quiet footer-link">Manifesto</a>
@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
     </div>
   </div>
 
-  <div class="mt-16 md:mt-20 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+  <div class="mt-10 md:mt-14 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
     <p class="footer-meta">Building agents that build.</p>
     <p class="footer-meta">© {year} Cinder Labs &middot; Europe / Global</p>
   </div>
