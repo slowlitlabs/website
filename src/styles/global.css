@@ -1,0 +1,420 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap");
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Cinder Labs — design tokens
+   Editorial restraint with a single living mark.
+   ───────────────────────────────────────────────────────────── */
+
+@theme {
+  --color-paper: #faf8f5;
+  --color-paper-deep: #f3efe7;
+  --color-ink: #1a1814;
+  --color-ink-soft: #2c2924;
+  --color-smoke: #6b6660;
+  --color-smoke-soft: #9a948b;
+  --color-line: #e8e3dc;
+  --color-line-soft: #efeae2;
+  --color-cinder: #b8421c;
+  --color-ember: #e85d2c;
+
+  --font-display: "Fraunces", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", "Menlo", monospace;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Base
+   Fonts: Fraunces (display), Geist (body), Geist Mono (meta).
+   All free, all from Google Fonts (imported at top).
+   ───────────────────────────────────────────────────────────── */
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv01", "ss02";
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  min-height: 100vh;
+  /* Faint grain — gives paper texture without being noisy */
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(184, 66, 28, 0.018) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(26, 24, 20, 0.015) 0%, transparent 50%);
+}
+
+::selection {
+  background: var(--color-cinder);
+  color: var(--color-paper);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Display type — Fraunces with optical sizing
+   ───────────────────────────────────────────────────────────── */
+
+.display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 340;
+  letter-spacing: -0.028em;
+  line-height: 0.96;
+  color: var(--color-ink);
+}
+
+/* Hero — pushed bigger, tighter tracking, lower weight for more refinement.
+   The italic 'i' in "fires" / "spread" lights up via Fraunces' italic axis. */
+.display-hero {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144, "SOFT" 70;
+  font-weight: 320;
+  font-size: clamp(4rem, 10.5vw, 9rem);
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+  color: var(--color-ink);
+}
+
+.display-large {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144, "SOFT" 60;
+  font-weight: 340;
+  font-size: clamp(2.75rem, 6.5vw, 5rem);
+  letter-spacing: -0.035em;
+  line-height: 0.96;
+}
+
+.display-medium {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96, "SOFT" 50;
+  font-weight: 360;
+  font-size: clamp(2rem, 3.8vw, 2.875rem);
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+}
+
+.display-small {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 36, "SOFT" 35;
+  font-weight: 400;
+  font-size: 1.625rem;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+/* Italic display variant — used sparingly for emphasis */
+.display-italic {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 70;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Mono — used only for the frame: labels, dates, versions
+   ───────────────────────────────────────────────────────────── */
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-smoke);
+  font-feature-settings: "tnum";
+}
+
+.mono-soft {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: var(--color-smoke);
+  font-feature-settings: "tnum";
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Body prose
+   ───────────────────────────────────────────────────────────── */
+
+.prose-lead {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+  font-size: clamp(1.25rem, 1.85vw, 1.5rem);
+  line-height: 1.45;
+  font-weight: 360;
+  color: var(--color-ink-soft);
+  letter-spacing: -0.012em;
+}
+
+.prose-body {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--color-ink-soft);
+  letter-spacing: -0.003em;
+}
+
+.prose-body p + p {
+  margin-top: 1.5rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   The ember mark — a 6px dot that breathes.
+   The only animated element on the entire site.
+   ───────────────────────────────────────────────────────────── */
+
+/* The ember mark — alive, visible, the brand signature.
+   Three layers: the dot, a soft halo, an outer atmosphere. */
+.ember {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-ember);
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.6),
+    0 0 8px rgba(232, 93, 44, 0.7),
+    0 0 18px rgba(232, 93, 44, 0.5),
+    0 0 36px rgba(232, 93, 44, 0.25);
+  animation: ember-breathe 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+.ember-large {
+  width: 22px;
+  height: 22px;
+  top: -4px;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.55),
+    0 0 14px rgba(232, 93, 44, 0.75),
+    0 0 32px rgba(232, 93, 44, 0.55),
+    0 0 60px rgba(232, 93, 44, 0.32),
+    0 0 100px rgba(232, 93, 44, 0.18);
+}
+
+.ember-mega {
+  width: 36px;
+  height: 36px;
+  top: -6px;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.5),
+    0 0 24px rgba(232, 93, 44, 0.8),
+    0 0 56px rgba(232, 93, 44, 0.55),
+    0 0 110px rgba(232, 93, 44, 0.32),
+    0 0 180px rgba(232, 93, 44, 0.18);
+}
+
+@keyframes ember-breathe {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+    background: #d04a1f;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+    background: #f56a35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ember {
+    animation: none;
+    opacity: 0.9;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Links
+   ───────────────────────────────────────────────────────────── */
+
+.link {
+  color: var(--color-ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--color-ink), var(--color-ink));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  transition: background-size 0.4s cubic-bezier(0.2, 0.6, 0.2, 1), color 0.2s;
+  padding-bottom: 1px;
+}
+
+.link:hover {
+  color: var(--color-cinder);
+  background-image: linear-gradient(var(--color-cinder), var(--color-cinder));
+  background-size: 100% 2px;
+}
+
+.link-quiet {
+  color: var(--color-smoke);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+.link-quiet:hover {
+  color: var(--color-cinder);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.2s, gap 0.3s cubic-bezier(0.2, 0.6, 0.2, 1);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.link-arrow:hover {
+  color: var(--color-cinder);
+  gap: 0.875rem;
+  border-bottom-color: var(--color-cinder);
+}
+
+.link-arrow .arrow {
+  transition: transform 0.3s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.link-arrow:hover .arrow {
+  transform: translateX(2px);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Layout primitives
+   ───────────────────────────────────────────────────────────── */
+
+.shell {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 768px) {
+  .shell {
+    padding: 0 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    padding: 0 6rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .shell {
+    padding: 0 8rem;
+  }
+}
+
+.measure {
+  max-width: 40rem;
+}
+
+.measure-wide {
+  max-width: 56rem;
+}
+
+/* Section rhythm — generous, editorial */
+.section {
+  padding-top: clamp(5rem, 12vw, 10rem);
+  padding-bottom: clamp(5rem, 12vw, 10rem);
+}
+
+.section-tight {
+  padding-top: clamp(3.5rem, 8vw, 6rem);
+  padding-bottom: clamp(3.5rem, 8vw, 6rem);
+}
+
+.section-hero {
+  padding-top: clamp(6rem, 14vw, 12rem);
+  padding-bottom: clamp(6rem, 14vw, 12rem);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Hairlines
+   ───────────────────────────────────────────────────────────── */
+
+.rule {
+  height: 1px;
+  background: var(--color-line);
+  border: 0;
+  margin: 0;
+}
+
+.rule-section {
+  height: 1px;
+  background: var(--color-line);
+  border: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Page enter — one orchestrated reveal
+   ───────────────────────────────────────────────────────────── */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.rise-1 { animation-delay: 0.05s; }
+.rise-2 { animation-delay: 0.18s; }
+.rise-3 { animation-delay: 0.32s; }
+.rise-4 { animation-delay: 0.48s; }
+.rise-5 { animation-delay: 0.64s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Numbered list (manifesto, beliefs)
+   ───────────────────────────────────────────────────────────── */
+
+.numbered {
+  display: grid;
+  gap: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.numbered-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(2rem, 3vw, 3rem);
+  align-items: baseline;
+}
+
+.numbered-item .num {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  color: var(--color-smoke-soft);
+  font-feature-settings: "tnum";
+  padding-top: 0.6rem;
+}

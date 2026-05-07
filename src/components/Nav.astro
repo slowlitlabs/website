@@ -1,0 +1,35 @@
+---
+const { current } = Astro.props as { current?: string };
+
+const links = [
+  { href: "/manifesto", label: "Manifesto", key: "manifesto" },
+  { href: "/ember", label: "Ember", key: "ember" },
+  { href: "/careers", label: "Careers", key: "careers" },
+  { href: "/contact", label: "Contact", key: "contact" },
+];
+---
+
+<nav class="shell flex items-center justify-between pt-10 md:pt-12 pb-8 md:pb-10">
+  <a href="/" class="flex items-baseline gap-3 group" aria-label="Cinder Labs — home">
+    <span class="display-small text-[color:var(--color-ink)]" style="font-weight: 440;">
+      Cinder Labs
+    </span>
+    <span class="ember" aria-hidden="true"></span>
+  </a>
+
+  <div class="hidden md:flex items-center gap-8">
+    {links.map(({ href, label, key }) => (
+      <a
+        href={href}
+        class="link-quiet"
+        style={current === key ? "color: var(--color-ink);" : ""}
+      >
+        {label}
+      </a>
+    ))}
+  </div>
+
+  <div class="md:hidden">
+    <a href="/manifesto" class="link-quiet">Menu</a>
+  </div>
+</nav>

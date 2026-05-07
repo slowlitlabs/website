@@ -1,0 +1,72 @@
+---
+import Base from "../layouts/Base.astro";
+
+const channels = [
+  {
+    label: "Press, partnerships, enterprise inquiries",
+    email: "hello@cinderlabs.ai",
+  },
+  {
+    label: "Careers",
+    email: "careers@cinderlabs.ai",
+  },
+  {
+    label: "Research collaboration",
+    email: "research@cinderlabs.ai",
+  },
+];
+---
+
+<Base
+  current="contact"
+  title="Contact — Cinder Labs"
+  description="Get in touch with Cinder Labs."
+>
+  <section class="shell section-hero pb-12 md:pb-16">
+    <div class="measure-wide">
+      <p class="mono rise rise-1">§ Get in touch</p>
+
+      <h1 class="display-hero mt-12 md:mt-16 rise rise-2">
+        Contact<span class="ember ember-mega ml-7 md:ml-10" aria-hidden="true"></span>
+      </h1>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <hr class="rule mb-20 md:mb-28" />
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3">
+        <p class="mono">§ Channels</p>
+      </div>
+      <div class="md:col-span-8 measure-wide">
+        <ul class="grid gap-16 md:gap-20">
+          {channels.map((c) => (
+            <li>
+              <p class="mono-soft">{c.label}</p>
+              <a href={`mailto:${c.email}`} class="display-medium link mt-5 inline-block">
+                {c.email}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <hr class="rule mb-20 md:mb-28" />
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3">
+        <p class="mono">§ Where we are</p>
+      </div>
+      <div class="md:col-span-8 measure-wide">
+        <h2 class="display-large">
+          Cinder Labs.
+        </h2>
+        <p class="prose-body mt-10" style="font-size: 1.1875rem;">
+          Headquartered in Europe. Working globally.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

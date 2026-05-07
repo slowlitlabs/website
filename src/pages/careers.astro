@@ -1,0 +1,109 @@
+---
+import Base from "../layouts/Base.astro";
+
+const roles = [
+  {
+    title: "Founding Research Engineer",
+    detail: "Frontier model training, post-training, evals.",
+  },
+  {
+    title: "Founding Product Engineer",
+    detail: "Agent products, full-stack, ship weekly.",
+  },
+  {
+    title: "Founding Designer",
+    detail: "Brand, product, the whole surface.",
+  },
+];
+---
+
+<Base
+  current="careers"
+  title="Careers — Cinder Labs"
+  description="We need builders. A small team, growing by adding agents instead of headcount."
+>
+  <section class="shell section-hero pb-12 md:pb-20">
+    <div class="measure-wide">
+      <p class="mono rise rise-1">§ Work at Cinder</p>
+
+      <h1 class="display-hero mt-12 md:mt-16 rise rise-2">
+        We need<br />builders.<span class="ember ember-mega ml-5 md:ml-7" aria-hidden="true"></span>
+      </h1>
+
+      <p class="prose-lead mt-16 md:mt-20 measure rise rise-3">
+        Cinder is a small team. It will stay small. We grow by adding agents,
+        not headcount. The humans we hire are senior, autonomous, and have
+        shipped products people use.
+      </p>
+
+      <p class="prose-body mt-10 measure rise rise-4">
+        If you have built and shipped frontier-quality work — research,
+        products, infrastructure, design — we want to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <hr class="rule mb-20 md:mb-28" />
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3">
+        <p class="mono">§ How we work</p>
+      </div>
+      <div class="md:col-span-8 measure-wide">
+        <ul class="grid gap-12 md:gap-14">
+          <li>
+            <h3 class="display-small">Remote, time-zone-overlapping with Europe.</h3>
+          </li>
+          <li>
+            <h3 class="display-small">No interviews about your weaknesses.</h3>
+            <p class="prose-body mt-4">
+              We ask about what you&apos;ve shipped and how you&apos;d ship
+              the next thing.
+            </p>
+          </li>
+          <li>
+            <h3 class="display-small">Pay is competitive with US frontier labs.</h3>
+            <p class="prose-body mt-4">Equity is meaningful.</p>
+          </li>
+          <li>
+            <h3 class="display-small">The lab uses its own products.</h3>
+            <p class="prose-body mt-4">You will work alongside agents from day one.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <hr class="rule mb-20 md:mb-28" />
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3">
+        <p class="mono">§ Open roles</p>
+      </div>
+      <div class="md:col-span-8 measure-wide">
+        <ol class="numbered">
+          {roles.map((role, i) => (
+            <li class="numbered-item">
+              <span class="num">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3 class="display-medium">{role.title}</h3>
+                <p class="prose-body mt-5">{role.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <p class="prose-body mt-20">
+          Don&apos;t see your role? Write to us anyway and tell us what
+          you&apos;d build here.
+        </p>
+
+        <div class="mt-12">
+          <a href="mailto:careers@cinderlabs.ai" class="link-arrow">
+            careers@cinderlabs.ai <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

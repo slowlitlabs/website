@@ -1,0 +1,26 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="shell mt-40 md:mt-56 pb-16 md:pb-20">
+  <hr class="rule mb-16 md:mb-20" />
+
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+    <div class="flex items-baseline gap-3">
+      <span class="display-small" style="font-weight: 440;">Cinder Labs</span>
+      <span class="ember" aria-hidden="true"></span>
+    </div>
+
+    <div class="flex flex-wrap gap-x-7 gap-y-3">
+      <a href="/manifesto" class="link-quiet">Manifesto</a>
+      <a href="/ember" class="link-quiet">Ember</a>
+      <a href="/careers" class="link-quiet">Careers</a>
+      <a href="/contact" class="link-quiet">Contact</a>
+    </div>
+  </div>
+
+  <div class="mt-16 md:mt-20 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+    <p class="mono-soft">Building agents that build.</p>
+    <p class="mono-soft">© {year} Cinder Labs &middot; Europe / Global</p>
+  </div>
+</footer>
