@@ -4,16 +4,22 @@
       <stop offset="0%" stop-color="#FBFBF8"/>
       <stop offset="100%" stop-color="#F1F1EC"/>
     </radialGradient>
-    <radialGradient id="plasma1" cx="80%" cy="35%" r="55%">
-      <stop offset="0%" stop-color="#8E5BFF" stop-opacity="0.18"/>
+    <radialGradient id="plasma1" cx="78%" cy="32%" r="50%">
+      <stop offset="0%" stop-color="#8E5BFF" stop-opacity="0.20"/>
       <stop offset="100%" stop-color="#8E5BFF" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="plasma2" cx="65%" cy="65%" r="50%">
-      <stop offset="0%" stop-color="#4D7CFF" stop-opacity="0.12"/>
+    <radialGradient id="plasma2" cx="92%" cy="62%" r="45%">
+      <stop offset="0%" stop-color="#4D7CFF" stop-opacity="0.16"/>
       <stop offset="100%" stop-color="#4D7CFF" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="emberGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#8E5BFF" stop-opacity="0.5"/>
+    <linearGradient id="flameGrad" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#6B3FE0"/>
+      <stop offset="55%" stop-color="#8E5BFF"/>
+      <stop offset="100%" stop-color="#7AA0FF"/>
+    </linearGradient>
+    <radialGradient id="flameHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A07AFF" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#8E5BFF" stop-opacity="0.15"/>
       <stop offset="100%" stop-color="#8E5BFF" stop-opacity="0"/>
     </radialGradient>
   </defs>
@@ -22,15 +28,29 @@
   <rect width="1200" height="630" fill="url(#plasma1)"/>
   <rect width="1200" height="630" fill="url(#plasma2)"/>
 
-  <text x="80" y="100" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="2" fill="#6B7185" text-transform="uppercase">§ RESEARCH &amp; PRODUCT LAB</text>
+  <text x="80" y="100" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="2.5" fill="#6B7185">§ RESEARCH &amp; PRODUCT LAB</text>
 
-  <text x="80" y="280" font-family="Fraunces, Iowan Old Style, Baskerville, serif" font-size="120" font-weight="340" letter-spacing="-4" fill="#0E1426">Small fires.</text>
-  <text x="80" y="410" font-family="Fraunces, Iowan Old Style, Baskerville, serif" font-size="120" font-weight="340" letter-spacing="-4" fill="#0E1426">Built to spread.</text>
+  <text x="80" y="280" font-family="Fraunces, Iowan Old Style, Baskerville, serif" font-size="120" font-weight="320" letter-spacing="-5" fill="#0E1426">Small fires.</text>
+  <text x="80" y="410" font-family="Fraunces, Iowan Old Style, Baskerville, serif" font-size="120" font-weight="320" letter-spacing="-5" fill="#0E1426">Built to spread.</text>
 
-  <circle cx="985" cy="378" r="50" fill="url(#emberGlow)"/>
-  <circle cx="985" cy="378" r="11" fill="#8E5BFF"/>
+  <g transform="translate(960 280)">
+    <ellipse cx="40" cy="60" rx="100" ry="120" fill="url(#flameHalo)"/>
+    <path
+      d="M55 0 C40 25 0 60 0 105 C0 145 25 175 55 180 C50 165 50 150 60 145 C75 142 75 165 80 175 C95 165 110 145 110 115 C110 75 75 35 55 0 Z"
+      fill="url(#flameGrad)"
+    />
+  </g>
 
-  <text x="80" y="560" font-family="Fraunces, Iowan Old Style, Baskerville, serif" font-size="32" font-weight="440" fill="#0E1426">Slow Lit Labs</text>
+  <g transform="translate(80 540)">
+    <g transform="translate(0 -22)">
+      <ellipse cx="13" cy="20" rx="20" ry="24" fill="url(#flameHalo)" opacity="0.6"/>
+      <path
+        d="M18 0 C13 8 0 20 0 35 C0 48 8 58 18 60 C16 55 16 50 20 48 C25 47 25 55 27 58 C32 55 37 48 37 38 C37 25 25 12 18 0 Z"
+        fill="url(#flameGrad)"
+      />
+    </g>
+    <text x="50" y="0" font-family="Fraunces, Iowan Old Style, Baskerville, serif" font-size="36" font-weight="380" letter-spacing="-1" fill="#0E1426">Slow Lit Labs</text>
+  </g>
 
   <text x="1120" y="560" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="1" fill="#6B7185" text-anchor="end">EUROPE / GLOBAL</text>
 </svg>

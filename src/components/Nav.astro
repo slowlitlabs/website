@@ -22,7 +22,7 @@ const links = [
       <a
         href={href}
         class="link-quiet"
-        style={current === key ? "color: var(--color-ink);" : ""}
+        aria-current={current === key ? "page" : undefined}
       >
         {label}
       </a>

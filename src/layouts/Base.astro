@@ -7,10 +7,12 @@ const {
   title = "Slow Lit Labs — Small fires. Built to spread.",
   description = "Slow Lit is a research and product lab building autonomous agents from Europe.",
   current,
+  noindex = false,
 } = Astro.props as {
   title?: string;
   description?: string;
   current?: string;
+  noindex?: boolean;
 };
 ---
 
@@ -34,6 +36,7 @@ const {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/og.svg" />
 
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#FAFAF7" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
