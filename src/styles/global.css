@@ -604,9 +604,15 @@ body {
    ───────────────────────────────────────────────────────────── */
 
 .sticky-label {
-  position: sticky;
-  top: 6rem;
-  align-self: start;
+  position: static;
+}
+
+@media (min-width: 768px) {
+  .sticky-label {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────

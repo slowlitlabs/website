@@ -29,7 +29,141 @@ const links = [
     ))}
   </div>
 
-  <div class="md:hidden">
-    <a href="/manifesto" class="link-quiet">Menu</a>
-  </div>
+  <button
+    type="button"
+    class="md:hidden mobile-menu-toggle"
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    data-mobile-toggle
+  >
+    <span class="mobile-menu-label" data-mobile-label>Menu</span>
+  </button>
 </nav>
+
+<div
+  class="mobile-menu"
+  id="mobile-menu"
+  data-mobile-panel
+  aria-hidden="true"
+>
+  <div class="mobile-menu-inner">
+    <ul class="mobile-menu-list">
+      {links.map(({ href, label, key }) => (
+        <li>
+          <a
+            href={href}
+            class="mobile-menu-link"
+            aria-current={current === key ? "page" : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var toggle = document.querySelector("[data-mobile-toggle]");
+    var panel = document.querySelector("[data-mobile-panel]");
+    var label = document.querySelector("[data-mobile-label]");
+    if (!toggle || !panel || !label) return;
+
+    function setOpen(open) {
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      panel.setAttribute("aria-hidden", open ? "false" : "true");
+      panel.classList.toggle("is-open", open);
+      label.textContent = open ? "Close" : "Menu";
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+
+    toggle.addEventListener("click", function () {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    panel.addEventListener("click", function (e) {
+      if (e.target && e.target.closest("a")) setOpen(false);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setOpen(false);
+      }
+    });
+  })();
+</script>
+
+<style is:global>
+  .mobile-menu-toggle {
+    background: none;
+    border: 0;
+    padding: 0.25rem 0;
+    cursor: pointer;
+    color: var(--color-smoke);
+    transition: color 0.2s;
+  }
+
+  .mobile-menu-toggle:hover {
+    color: var(--color-cinder);
+  }
+
+  .mobile-menu-label {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: var(--color-paper);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .mobile-menu.is-open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .mobile-menu-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 7.5rem 2rem 4rem;
+  }
+
+  .mobile-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mobile-menu-link {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 96, "SOFT" 50;
+    font-weight: 360;
+    font-size: clamp(2.25rem, 9vw, 3.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--color-ink);
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu-link:hover {
+    color: var(--color-cinder);
+  }
+
+  .mobile-menu-link[aria-current="page"] {
+    color: var(--color-cinder);
+  }
+</style>
