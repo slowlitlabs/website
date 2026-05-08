@@ -30,7 +30,7 @@
   <circle cx="985" cy="378" r="50" fill="url(#emberGlow)"/>
   <circle cx="985" cy="378" r="11" fill="#8E5BFF"/>
 
-  <text x="80" y="560" font-family="Fraunces, Iowan Old Style, Baskerville, serif" font-size="32" font-weight="440" fill="#0E1426">Cinder Labs</text>
+  <text x="80" y="560" font-family="Fraunces, Iowan Old Style, Baskerville, serif" font-size="32" font-weight="440" fill="#0E1426">Stoken Labs</text>
 
   <text x="1120" y="560" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="1" fill="#6B7185" text-anchor="end">EUROPE / GLOBAL</text>
 </svg>

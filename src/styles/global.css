@@ -2,12 +2,12 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────
-   Cinder Labs — design tokens
+   Stoken Labs — design tokens
    Editorial restraint with a single living mark.
    ───────────────────────────────────────────────────────────── */
 
 @theme {
-  /* Cinder Labs — official palette.
+  /* Stoken Labs — official palette.
      The hottest part of a flame is blue/violet. We work at the hot point. */
   --color-paper: #fafaf7;
   --color-paper-deep: #f1f1ec;
