@@ -1,0 +1,401 @@
+---
+import Base from "../layouts/Base.astro";
+import Wordmark from "../components/Wordmark.astro";
+
+const palette = [
+  { name: "Paper",        hex: "#FAFAF7", role: "Page background" },
+  { name: "Paper deep",   hex: "#F1F1EC", role: "Inset surfaces, favicon plate" },
+  { name: "Ink",          hex: "#0E1426", role: "Type, mark on light" },
+  { name: "Ink soft",     hex: "#222840", role: "Body prose" },
+  { name: "Smoke",        hex: "#6B7185", role: "Meta, mono labels" },
+  { name: "Smoke soft",   hex: "#9AA0B3", role: "Captions, attribution" },
+  { name: "Line",         hex: "#E2E2DC", role: "Hairlines, dividers" },
+  { name: "Cinder",       hex: "#8E5BFF", role: "Brand violet · accent · selection" },
+  { name: "Ember",        hex: "#A07AFF", role: "Live brand mark, glow" },
+  { name: "Blue",         hex: "#4D7CFF", role: "Hot point, gradient origin" },
+  { name: "Blue bright",  hex: "#7AA0FF", role: "Highlight, atmosphere" },
+];
+
+const pairings = [
+  { weight: "AAA", surface: "Ink on Paper" },
+  { weight: "AA",  surface: "Smoke on Paper" },
+  { weight: "AAA", surface: "Paper on Ink" },
+  { weight: "AA",  surface: "Cinder on Paper" },
+];
+---
+
+<Base
+  current=""
+  title="Brand Kit — Slow Lit Labs"
+  description="Mark, type, color, and lockup rules for Slow Lit Labs."
+  noindex
+>
+  <section class="shell hero-trim">
+    <div class="measure-wide">
+      <p class="mono rise rise-1">§ Brand kit · Internal</p>
+
+      <h1 class="display-hero mt-12 md:mt-16 rise rise-2">
+        The kit.
+      </h1>
+
+      <p class="prose-lead mt-12 md:mt-16 measure rise rise-3">
+        One mark, one wordmark, one type system. Everything renders from a
+        single ratio. Use this page as the source of truth.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ─── 01 · Mark ─── -->
+  <section class="shell section reveal">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3 sticky-label">
+        <p class="mono">§ 01 · Mark</p>
+        <p class="prose-body mt-6 text-[0.95rem]" style="color: var(--color-smoke);">
+          Vector flame. Inherits color from the gradient in the SVG. The
+          curl is the brand. Don't outline. Don't recolor outside palette.
+        </p>
+      </div>
+      <div class="md:col-span-8 space-y-10">
+        <div class="kit-stage">
+          <div class="flex items-end gap-12 flex-wrap">
+            <div class="flex flex-col items-start gap-3">
+              <Wordmark size="hero" />
+              <span class="kit-cap">Wordmark · hero · 88px</span>
+            </div>
+          </div>
+        </div>
+        <div class="kit-stage">
+          <div class="flex flex-col gap-8">
+            <div class="flex flex-col items-start gap-3">
+              <Wordmark size="section" />
+              <span class="kit-cap">Wordmark · section · 48px</span>
+            </div>
+            <div class="flex flex-col items-start gap-3">
+              <Wordmark size="nav" />
+              <span class="kit-cap">Wordmark · nav · 20px</span>
+            </div>
+            <div class="flex flex-col items-start gap-3">
+              <Wordmark size="footer" />
+              <span class="kit-cap">Wordmark · footer · 16px</span>
+            </div>
+          </div>
+        </div>
+        <div class="kit-stage kit-stage-dark">
+          <div class="flex flex-col gap-8">
+            <div class="flex flex-col items-start gap-3">
+              <span class="wordmark is-light"><Wordmark size="hero" /></span>
+              <span class="kit-cap kit-cap-dark">On dark · hero</span>
+            </div>
+            <div class="flex flex-col items-start gap-3">
+              <span class="wordmark is-light"><Wordmark size="nav" /></span>
+              <span class="kit-cap kit-cap-dark">On dark · nav</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ─── 02 · Lockup formula ─── -->
+  <section class="shell section reveal">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3 sticky-label">
+        <p class="mono">§ 02 · Formula</p>
+        <p class="prose-body mt-6 text-[0.95rem]" style="color: var(--color-smoke);">
+          The same ratio at every surface. Don't eyeball. Compute.
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <div class="kit-formula">
+          <p class="mono mb-4">Cap-height ratio</p>
+          <p class="display-medium" style="font-feature-settings: 'tnum';">
+            flame_height = font_size × 0.70 × 1.6
+          </p>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="kit-spec">
+              <p class="mono">Flame · color</p>
+              <p class="kit-spec-val">Linear gradient · #4D7CFF → #6B5BFF → #8E5BFF</p>
+            </div>
+            <div class="kit-spec">
+              <p class="mono">Vertical balance</p>
+              <p class="kit-spec-val">translateY(−8%) optical nudge</p>
+            </div>
+            <div class="kit-spec">
+              <p class="mono">SlowLit · weight</p>
+              <p class="kit-spec-val">460 · tracking −0.032em</p>
+            </div>
+            <div class="kit-spec">
+              <p class="mono">Labs · weight</p>
+              <p class="kit-spec-val">340 · tracking −0.022em</p>
+            </div>
+            <div class="kit-spec">
+              <p class="mono">Gap · mark to text</p>
+              <p class="kit-spec-val">0.55em</p>
+            </div>
+            <div class="kit-spec">
+              <p class="mono">Gap · SlowLit to Labs</p>
+              <p class="kit-spec-val">0.32em</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ─── 03 · Don'ts ─── -->
+  <section class="shell section reveal">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3 sticky-label">
+        <p class="mono">§ 03 · Don't</p>
+        <p class="prose-body mt-6 text-[0.95rem]" style="color: var(--color-smoke);">
+          The mark is small and confident. These break it.
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="kit-dont">
+            <span class="kit-dont-bad" style="font-family: var(--font-display); font-size: 28px; letter-spacing: -0.028em;">
+              <span style="font-weight: 700;">SLOW LIT LABS</span>
+            </span>
+            <p class="kit-cap">Don't use uppercase</p>
+          </div>
+          <div class="kit-dont">
+            <span class="kit-dont-bad" style="font-family: var(--font-display); font-size: 28px; letter-spacing: 0.05em; font-weight: 380;">
+              S l o w L i t   L a b s
+            </span>
+            <p class="kit-cap">Don't track out</p>
+          </div>
+          <div class="kit-dont">
+            <span class="kit-dont-bad" style="font-family: var(--font-display); font-size: 28px; font-style: italic; font-weight: 380;">
+              <em>SlowLit Labs</em>
+            </span>
+            <p class="kit-cap">Don't italicize the wordmark</p>
+          </div>
+          <div class="kit-dont">
+            <span class="kit-dont-bad" style="font-family: var(--font-sans); font-size: 28px; font-weight: 600;">
+              SlowLit Labs
+            </span>
+            <p class="kit-cap">Don't replace the typeface</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ─── 04 · Color ─── -->
+  <section class="shell section reveal">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3 sticky-label">
+        <p class="mono">§ 04 · Color</p>
+        <p class="prose-body mt-6 text-[0.95rem]" style="color: var(--color-smoke);">
+          The hottest part of a flame is blue/violet. We work at the hot point.
+          Eleven tokens, no exceptions.
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {palette.map((c) => (
+            <div class="kit-swatch">
+              <div class="kit-swatch-chip" style={`background: ${c.hex};`}></div>
+              <div class="kit-swatch-meta">
+                <p class="kit-swatch-name">{c.name}</p>
+                <p class="kit-swatch-hex">{c.hex}</p>
+                <p class="kit-swatch-role">{c.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {pairings.map((p) => (
+            <div class="kit-spec">
+              <p class="mono">Contrast · {p.weight}</p>
+              <p class="kit-spec-val">{p.surface}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ─── 05 · Type ─── -->
+  <section class="shell section reveal">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3 sticky-label">
+        <p class="mono">§ 05 · Type</p>
+        <p class="prose-body mt-6 text-[0.95rem]" style="color: var(--color-smoke);">
+          Three families. Fraunces for display and italics. IBM Plex Sans
+          for prose. Geist Mono for the frame.
+        </p>
+      </div>
+      <div class="md:col-span-8 space-y-10">
+        <div class="kit-stage">
+          <p class="display-hero">Display hero</p>
+          <p class="kit-cap mt-4">Fraunces · opsz 144 · weight 320 · SOFT 70</p>
+        </div>
+        <div class="kit-stage">
+          <p class="display-large">Display large</p>
+          <p class="kit-cap mt-4">Fraunces · opsz 144 · weight 340 · SOFT 60</p>
+        </div>
+        <div class="kit-stage">
+          <p class="display-medium">Display medium — section heads</p>
+          <p class="kit-cap mt-4">Fraunces · opsz 96 · weight 360 · SOFT 50</p>
+        </div>
+        <div class="kit-stage">
+          <p class="prose-lead">Prose lead — for the first paragraph of any section. Set in Fraunces at body size with light weight.</p>
+          <p class="kit-cap mt-4">Fraunces · opsz 24 · weight 360</p>
+        </div>
+        <div class="kit-stage">
+          <p class="prose-body">Prose body — IBM Plex Sans, weight 400, line-height 1.7. Used for everything below the lead. Long-form reads stay calm and even.</p>
+          <p class="kit-cap mt-4">IBM Plex Sans · weight 400 · 17px</p>
+        </div>
+        <div class="kit-stage">
+          <p class="mono">§ Mono label · 0.6875rem · tracked 0.16em</p>
+          <p class="kit-cap mt-4">Geist Mono · weight 450 · uppercase</p>
+        </div>
+        <div class="kit-stage">
+          <p class="pull-quote">A pull quote, set in Fraunces italic, takes over once per page.</p>
+          <p class="kit-cap mt-4">Fraunces · opsz 144 · weight 320 · italic</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ─── 06 · Voice ─── -->
+  <section class="shell section reveal">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+      <div class="md:col-span-3 sticky-label">
+        <p class="mono">§ 06 · Voice</p>
+      </div>
+      <div class="md:col-span-8 measure-wide">
+        <div class="prose-body">
+          <p>Short sentences. No em-dashes. No hedging.</p>
+          <p>We say what we ship and we ship what we say.</p>
+          <p style="color: var(--color-ink); font-weight: 500;">
+            The lab is the proof.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .kit-stage {
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    background: var(--color-paper);
+  }
+
+  .kit-stage-dark {
+    background: #0E1426;
+    border: 1px solid #1A2342;
+  }
+
+  .kit-cap {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-smoke-soft);
+  }
+
+  .kit-cap-dark { color: #6B7185; }
+
+  .kit-formula {
+    padding: clamp(2rem, 4vw, 3rem);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    background: var(--color-paper-deep);
+  }
+
+  .kit-spec {
+    padding: 0.875rem 1.125rem;
+    border-left: 1px solid var(--color-line);
+    background: var(--color-paper);
+  }
+
+  .kit-spec-val {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-ink);
+    margin-top: 0.25rem;
+    font-feature-settings: "tnum";
+  }
+
+  .kit-dont {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    border: 1px dashed #d4574d;
+    border-radius: 4px;
+    background: var(--color-paper);
+    min-height: 140px;
+    justify-content: center;
+  }
+
+  .kit-dont-bad {
+    color: var(--color-smoke);
+    text-decoration: line-through;
+    text-decoration-color: rgba(212, 87, 77, 0.55);
+    text-decoration-thickness: 1px;
+  }
+
+  .kit-swatch {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-paper);
+  }
+
+  .kit-swatch-chip {
+    height: 96px;
+  }
+
+  .kit-swatch-meta {
+    padding: 0.875rem 1rem 1rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .kit-swatch-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 460;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+  }
+
+  .kit-swatch-hex {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--color-smoke);
+    margin-top: 0.25rem;
+    font-feature-settings: "tnum";
+  }
+
+  .kit-swatch-role {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    color: var(--color-smoke-soft);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+</style>
