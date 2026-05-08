@@ -1,22 +1,33 @@
 ---
-import FlameMark from "./FlameMark.astro";
-const { size = "nav", showMark = true } = Astro.props as {
-  size?: "nav" | "footer";
-  showMark?: boolean;
+const { size = "nav" } = Astro.props as {
+  size?: "nav" | "footer" | "hero" | "section";
 };
 
-const className = size === "footer" ? "wordmark wordmark-footer" : "wordmark wordmark-nav";
-const markSize = size === "footer" ? 28 : 30;
+// Locked lockup: flame height = font-size × 0.70 × 1.6 = font-size × 1.12
+// Cap-height-derived ratio so every size renders the same proportions.
+
+const sizes = {
+  hero:    { font: 88, flame: 99, opsz: 144, soft: 50 },
+  section: { font: 48, flame: 54, opsz: 96,  soft: 48 },
+  footer:  { font: 16, flame: 18, opsz: 24,  soft: 32 },
+  nav:     { font: 20, flame: 22, opsz: 36,  soft: 36 },
+} as const;
+
+const s = sizes[size];
 ---
 
-<span class={className}>
-  {showMark && (
-    <span class="wordmark-mark">
-      <FlameMark size={markSize} />
-    </span>
-  )}
-  <span class="wordmark-text">
-    <span class="wordmark-name">Slow Lit</span><span class="wordmark-labs">Labs</span>
+<span class="wordmark">
+  <span
+    class="wordmark-mark"
+    style={`height: ${s.flame}px;`}
+  >
+    <img src="/brand/flame-medium.png" alt="" />
+  </span>
+  <span
+    class="wordmark-text"
+    style={`font-size: ${s.font}px; font-variation-settings: 'opsz' ${s.opsz}, 'SOFT' ${s.soft};`}
+  >
+    Slow Lit Labs
   </span>
 </span>
 
@@ -24,53 +35,41 @@ const markSize = size === "footer" ? 28 : 30;
   .wordmark {
     display: inline-flex;
     align-items: center;
-    font-family: var(--font-display);
-    color: var(--color-ink);
+    gap: 0.55em;
     line-height: 1;
     white-space: nowrap;
-    gap: 0.45rem;
+    color: var(--color-ink);
   }
 
-  /* Use grid centering for the mark so the flame's full visible bounds
-     are vertically centered against the text's actual rendered height,
-     not its bounding box including descenders. */
   .wordmark-mark {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     line-height: 0;
+    flex-shrink: 0;
+  }
+
+  .wordmark-mark img {
+    display: block;
+    width: auto;
+    height: 100%;
+    /* Optical-balance nudge: the flame's visible mass sits below its
+       geometric center because the curled tip leaves empty space at
+       the top. Push the inner img up 8% to compensate. */
+    transform: translateY(-8%);
+    user-select: none;
+    pointer-events: none;
   }
 
   .wordmark-text {
-    display: inline-flex;
-    align-items: baseline;
-    /* The text block height is the cap-height + descender. We center the
-       flame against this whole block via the parent's align-items: center.
-       Adding a small downward nudge for true optical alignment. */
+    font-family: var(--font-display);
+    font-weight: 380;
+    letter-spacing: -0.028em;
+    line-height: 1;
+    color: inherit;
   }
 
-  .wordmark-name {
-    font-variation-settings: "opsz" 36, "SOFT" 30;
-    font-weight: 460;
-    letter-spacing: -0.018em;
-  }
-
-  /* Labs sits a touch lighter — typographic contrast within the wordmark,
-     but kept close in weight so the difference is felt, not announced.
-     Negative margin pulls it tight against Slow Lit, killing the optical gap. */
-  .wordmark-labs {
-    font-variation-settings: "opsz" 36, "SOFT" 40;
-    font-weight: 320;
-    letter-spacing: -0.005em;
-    color: var(--color-ink-soft);
-    margin-left: 0.32em;
-  }
-
-  .wordmark-nav {
-    font-size: 1.1875rem;
-  }
-
-  .wordmark-footer {
-    font-size: 1.1875rem;
+  /* Inverted variant for dark surfaces */
+  .wordmark.is-light {
+    color: #FAFAF7;
   }
 </style>

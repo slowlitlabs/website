@@ -587,6 +587,21 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   Hero flame — the rendered brand mark used inline beside headlines.
+   Sized relative to the headline so it scales with viewport.
+   ───────────────────────────────────────────────────────────── */
+
+.hero-flame {
+  display: inline-block;
+  height: 1.05em;
+  width: auto;
+  vertical-align: -0.18em;
+  margin-left: clamp(0.4rem, 1vw, 0.85rem);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────
    Sticky section labels — the editorial magazine move.
    The §-label in the left column sticks while you read the body.
    ───────────────────────────────────────────────────────────── */
