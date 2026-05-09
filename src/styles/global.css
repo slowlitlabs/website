@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Self-hosted fonts. Fraunces variable (opsz, SOFT, wght axes) + italic,
+   IBM Plex Sans, Geist Mono variable. All served from our own origin —
+   no Google Fonts round-trip on any page. */
+@import "@fontsource-variable/fraunces/full.css";
+@import "@fontsource-variable/fraunces/full-italic.css";
+@import "@fontsource/ibm-plex-sans/300.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource-variable/geist-mono/index.css";
+
 /* ─────────────────────────────────────────────────────────────
    Slow Lit Labs — design tokens
    Editorial restraint with a single living mark.
@@ -21,9 +33,9 @@
   --color-blue: #4d7cff;
   --color-blue-bright: #7aa0ff;
 
-  --font-display: "Fraunces", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", serif;
+  --font-display: "Fraunces Variable", "Fraunces", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", serif;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", "Menlo", monospace;
+  --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, "SFMono-Regular", "Menlo", monospace;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -524,40 +536,6 @@ body {
 }
 
 
-
-/* ─────────────────────────────────────────────────────────────
-   View transitions — Astro <ClientRouter /> page swap.
-   Default is a slide; we want a quiet cross-fade.
-   ───────────────────────────────────────────────────────────── */
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.28s;
-  animation-timing-function: cubic-bezier(0.2, 0.6, 0.2, 1);
-}
-
-::view-transition-old(root) {
-  animation-name: fade-out;
-}
-
-::view-transition-new(root) {
-  animation-name: fade-in;
-}
-
-@keyframes fade-out {
-  to { opacity: 0; }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
-  }
-}
 
 /* ─────────────────────────────────────────────────────────────
    Page enter — one orchestrated reveal on hero

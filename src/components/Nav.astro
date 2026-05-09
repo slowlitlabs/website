@@ -65,14 +65,11 @@ const links = [
 </div>
 
 <script is:inline>
-  function initMobileMenu() {
+  (function () {
     var toggle = document.querySelector("[data-mobile-toggle]");
     var panel = document.querySelector("[data-mobile-panel]");
     var label = document.querySelector("[data-mobile-label]");
     if (!toggle || !panel || !label) return;
-
-    // Reset body scroll lock between page transitions.
-    document.body.style.overflow = "";
 
     function setOpen(open) {
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
@@ -96,9 +93,7 @@ const links = [
         setOpen(false);
       }
     });
-  }
-
-  document.addEventListener("astro:page-load", initMobileMenu);
+  })();
 </script>
 
 <style is:global>

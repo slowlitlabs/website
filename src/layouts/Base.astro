@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import { ClientRouter } from "astro:transitions";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 
@@ -45,19 +44,6 @@ const {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="alternate icon" href="/favicon.ico" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Geist+Mono:wght@400..600&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Geist+Mono:wght@400..600&display=swap"
-    />
-
-    <ClientRouter />
   </head>
   <body>
     <div class="page-plasma" aria-hidden="true"></div>
@@ -69,9 +55,8 @@ const {
 
     <script is:inline>
       // Reveal-on-scroll: add .in-view to .reveal and .rule elements
-      // when they enter the viewport. Runs on initial load AND after
-      // every view transition (Astro fires astro:page-load on both).
-      function initReveal() {
+      // when they enter the viewport. One-shot — never removed.
+      (function () {
         if (typeof window === "undefined") return;
         if (
           window.matchMedia &&
@@ -100,9 +85,7 @@ const {
           .forEach(function (el) {
             io.observe(el);
           });
-      }
-
-      document.addEventListener("astro:page-load", initReveal);
+      })();
     </script>
   </body>
 </html>
