@@ -552,18 +552,26 @@ body {
   }
 }
 
+/* Default: visible, no animation. Rise plays only on the very first
+   document load — after that, ClientRouter swaps content into place
+   without choreography. */
 .rise {
+  opacity: 1;
+  transform: none;
+}
+
+html[data-first-load] .rise {
   animation: rise 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) both;
 }
 
-.rise-1 { animation-delay: 0.05s; }
-.rise-2 { animation-delay: 0.18s; }
-.rise-3 { animation-delay: 0.32s; }
-.rise-4 { animation-delay: 0.48s; }
-.rise-5 { animation-delay: 0.64s; }
+html[data-first-load] .rise-1 { animation-delay: 0.05s; }
+html[data-first-load] .rise-2 { animation-delay: 0.18s; }
+html[data-first-load] .rise-3 { animation-delay: 0.32s; }
+html[data-first-load] .rise-4 { animation-delay: 0.48s; }
+html[data-first-load] .rise-5 { animation-delay: 0.64s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise {
+  html[data-first-load] .rise {
     animation: none;
   }
 }
@@ -572,7 +580,15 @@ body {
    Reveal-on-scroll — sections fade up once when entering viewport
    ───────────────────────────────────────────────────────────── */
 
+/* Default: visible. Reveal-on-scroll only runs on the first document
+   load so subsequent navigations don't have a wave of opacity-0
+   sections waiting on IntersectionObserver. */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html[data-first-load] .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -581,13 +597,13 @@ body {
   will-change: opacity, transform;
 }
 
-.reveal.in-view {
+html[data-first-load] .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  html[data-first-load] .reveal {
     opacity: 1;
     transform: none;
     transition: none;
